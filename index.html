@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <title>Startseite</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="javascript/main.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js"></script>
+    </head>
+    <body>
+        <form onsubmit="return showToDo()">
+            <input id="to-do" type="text" onsubmit="showToDo()" placeholder="ToDo" />
+            <ul id="text"></ul>
+            <button type="submit">Add ToDo</button>
+        </form>
+    </body>
+</html>
