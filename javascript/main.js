@@ -2,8 +2,8 @@ let index = 0;
 function showToDo() {
     if(document.getElementById('to-do').value != (null || "")){
         document.getElementById('text').innerHTML += 
-        `<li id="${index}"> <strong id="text-${index}">` + document.getElementById('to-do').value + `</strong>\n
-            <button type="button" id="edit-button-${index}" onclick="editToDo(${index})">Edit</button> \n 
+        `<li id="${index}"> <strong id="text-${index}">` + document.getElementById('to-do').value + `</strong>
+            <button type="button" id="edit-button-${index}" onclick="editToDo(${index})">Edit</button>
             <button type="button" onclick="deleteToDo(${index})">Delete</button> 
         </li>`;
         // Clear Textfield for new ToDo
@@ -23,7 +23,7 @@ function editToDo(number) {
     let word = $(`#text-${number}`).text();
     $(`#edit-button-${number}`).attr('disabled', true);
     document.getElementById(`text-${number}`).innerHTML = 
-    `<input type="text" id="edit-${number}" value="${word}" /> \n <button type="button" onclick="save(${number})">Save</button>`;
+    `<input type="text" id="edit-${number}" value="${word}" /><button type="button" onclick="save(${number})">Save</button>`;
     $(`#edit-${number}`).keypress(function (e) {
         var key = e.which;
         if(key == 13) {
