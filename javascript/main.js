@@ -6,8 +6,8 @@ function showToDo() {
             <div id="div-${index}">
                 <input type="checkbox" id="check-${index}" onclick="checkCheckbox(${index})" />
                 <font id="text-${index}">` + $('#to-do').val() + `</font>
-                <i id="edit-button-${index}" class="fa fa-pencil" aria-hidden="true" onclick="editToDo(${index})"></i>
-                <i class="fa fa-trash" aria-hidden="true" onclick="deleteToDo(${index})"  style="color: red;"></i>
+                <i id="edit-button-${index}" class="fa fa-pencil" onclick="editToDo(${index})"></i>
+                <i class="fa fa-trash" onclick="deleteToDo(${index})"  style="color: red;"></i>
                  
             </div>
             <hr id="hr-${index}">
@@ -48,7 +48,7 @@ function editToDo(number) {
     $(`input#check-${number}`).attr('disabled', true);
     $(`#text-${number}`).html( 
         `<input type="text" id="edit-${number}" value="${word}" />
-         <i class="fa fa-floppy-o" aria-hidden="true" onclick="save(${number})" style="color: dark-blue;"></i>
+         <i class="fa fa-floppy-o" onclick="save(${number})" style="color: dark-blue;"></i>
         `
     );
     $(`#edit-${number}`).keypress(function (e) {
