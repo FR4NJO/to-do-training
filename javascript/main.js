@@ -26,6 +26,10 @@ function deleteToDo(number) {
     $(`#hr-${number}`).remove();
 }
 
+function deleteAllToDos() {
+    $('#text').html('');
+}
+
 function checkCheckbox(number) {
     if($(`input#check-${number}`).prop('checked') == true) {
         $(`font#text-${number}`).css('text-decoration', 'line-through');

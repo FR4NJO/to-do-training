@@ -12,7 +12,8 @@
         <form onsubmit="return showToDo()">
             <input id="to-do" type="text" onsubmit="showToDo()" placeholder="ToDo" />
             <button type="submit">Add ToDo</button><br><br>
-            <div style="position: absolute;" id="text"></div>
+            <div id="text"></div>
+            <button type="button" onclick="deleteAllToDos()">Remove All ToDo's</button>
         </form>
     </body>
 </html>
