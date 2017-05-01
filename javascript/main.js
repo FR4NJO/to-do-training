@@ -40,6 +40,7 @@ function editToDo(number) {
     let word = $(`#text-${number}`).text();
     $(`font#text-${number}`).css('text-decoration', 'none');
     $(`#edit-button-${number}`).attr('disabled', true);
+    $(`input#check-${number}`).attr('disabled', true);
     $(`#text-${number}`).html( 
         `<input type="text" id="edit-${number}" value="${word}" />
          <button type="button" onclick="save(${number})">Save</button>
@@ -56,6 +57,7 @@ function editToDo(number) {
 function save(number) {
     if($(`#edit-${number}`).val() != (null || "")) {
         $(`#edit-button-${number}`).attr('disabled', false);
+        $(`input#check-${number}`).attr('disabled', false);
         $(`#text-${number}`).html(
             $(`#edit-${number}`).val()
         );
