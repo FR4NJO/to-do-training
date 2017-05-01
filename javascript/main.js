@@ -2,10 +2,15 @@ let index = 0;
 function showToDo() {
     if($('#to-do').val() != (null || "")){
         $('#text').append( 
-            `<li id="li-${index}"> <strong id="text-${index}">` + $('#to-do').val() + `</strong>
+            `
+            <div id="div-${index}">
+                <input type="checkbox" id="check-${index}" onclick="checkCheckbox(${index})" />
+                <font id="text-${index}">` + $('#to-do').val() + `</font>
                 <button type="button" id="edit-button-${index}" onclick="editToDo(${index})">Edit</button>
                 <button type="button" onclick="deleteToDo(${index})">Delete</button> 
-            </li>`
+            </div>
+            <hr id="hr-${index}">
+            `
         );
         // Clear Textfield for new ToDo
         $('#to-do').val('');
@@ -17,14 +22,28 @@ function showToDo() {
 }
 
 function deleteToDo(number) {
-    $(`#li-${number}`).remove();
+    $(`#div-${number}`).remove();
+    $(`#hr-${number}`).remove();
+}
+
+function checkCheckbox(number) {
+    if($(`input#check-${number}`).prop('checked') == true) {
+        $(`font#text-${number}`).css('text-decoration', 'line-through');
+    }
+
+    else {
+        $(`font#text-${number}`).css('text-decoration', 'none');
+    }
 }
 
 function editToDo(number) {
     let word = $(`#text-${number}`).text();
+    $(`font#text-${number}`).css('text-decoration', 'none');
     $(`#edit-button-${number}`).attr('disabled', true);
     $(`#text-${number}`).html( 
-        `<input type="text" id="edit-${number}" value="${word}" /><button type="button" onclick="save(${number})">Save</button>`
+        `<input type="text" id="edit-${number}" value="${word}" />
+         <button type="button" onclick="save(${number})">Save</button>
+        `
     );
     $(`#edit-${number}`).keypress(function (e) {
         var key = e.which;
@@ -40,6 +59,7 @@ function save(number) {
         $(`#text-${number}`).html(
             $(`#edit-${number}`).val()
         );
+        $(`font#text-${number}`).css('text-decoration', (($(`input#check-${number}`).prop('checked') == true) ? 'line-through' : 'none'));
     } else {
         alert('You can not save an empty ToDo');
     }
