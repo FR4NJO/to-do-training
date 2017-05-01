@@ -5,13 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
         <script src="javascript/main.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js"></script>
     </head>
     <body>
         <form onsubmit="return showToDo()">
             <input id="to-do" type="text" onsubmit="showToDo()" placeholder="ToDo" />
-            <button type="submit">Add ToDo</button><br><br>
+            <i class="fa fa-plus-square fa-lg" aria-hidden="true" onclick="return showToDo()" style="color: green;"></i>
+            <br><br>
             <div id="text"></div>
             <button type="button" onclick="deleteAllToDos()">Remove All ToDo's</button>
         </form>

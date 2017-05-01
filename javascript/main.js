@@ -6,8 +6,9 @@ function showToDo() {
             <div id="div-${index}">
                 <input type="checkbox" id="check-${index}" onclick="checkCheckbox(${index})" />
                 <font id="text-${index}">` + $('#to-do').val() + `</font>
-                <button type="button" id="edit-button-${index}" onclick="editToDo(${index})">Edit</button>
-                <button type="button" onclick="deleteToDo(${index})">Delete</button> 
+                <i id="edit-button-${index}" class="fa fa-pencil" aria-hidden="true" onclick="editToDo(${index})"></i>
+                <i class="fa fa-trash" aria-hidden="true" onclick="deleteToDo(${index})"  style="color: red;"></i>
+                 
             </div>
             <hr id="hr-${index}">
             `
@@ -43,11 +44,11 @@ function checkCheckbox(number) {
 function editToDo(number) {
     let word = $(`#text-${number}`).text();
     $(`font#text-${number}`).css('text-decoration', 'none');
-    $(`#edit-button-${number}`).attr('disabled', true);
+    $(`#edit-button-${number}`).css('display', 'none');
     $(`input#check-${number}`).attr('disabled', true);
     $(`#text-${number}`).html( 
         `<input type="text" id="edit-${number}" value="${word}" />
-         <button type="button" onclick="save(${number})">Save</button>
+         <i class="fa fa-floppy-o" aria-hidden="true" onclick="save(${number})" style="color: dark-blue;"></i>
         `
     );
     $(`#edit-${number}`).keypress(function (e) {
@@ -60,7 +61,7 @@ function editToDo(number) {
 
 function save(number) {
     if($(`#edit-${number}`).val() != (null || "")) {
-        $(`#edit-button-${number}`).attr('disabled', false);
+        $(`#edit-button-${number}`).css('display', 'inline');
         $(`input#check-${number}`).attr('disabled', false);
         $(`#text-${number}`).html(
             $(`#edit-${number}`).val()
