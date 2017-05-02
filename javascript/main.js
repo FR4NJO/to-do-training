@@ -1,6 +1,6 @@
 let index = 0;
 function showToDo() {
-    if($('#to-do').val() != (null || "")){
+    if($('#to-do').val().trim() != (null || "")){
         $('#text').append( 
             `
             <div id="div-${index}">
@@ -60,7 +60,7 @@ function editToDo(number) {
 }
 
 function save(number) {
-    if($(`#edit-${number}`).val() != (null || "")) {
+    if($(`#edit-${number}`).val().trim() != (null || "")) {
         $(`#edit-button-${number}`).css('display', 'inline');
         $(`input#check-${number}`).attr('disabled', false);
         $(`#text-${number}`).html(
