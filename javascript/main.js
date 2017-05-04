@@ -4,13 +4,16 @@ function showToDo() {
         $('#text').append( 
             `
             <div id="div-${index}">
-                <input type="checkbox" id="check-${index}" onclick="checkCheckbox(${index})" />
-                <font id="text-${index}">` + $('#to-do').val() + `</font>
-                <i id="edit-button-${index}" class="fa fa-pencil" onclick="editToDo(${index})"></i>
-                <i class="fa fa-trash" onclick="deleteToDo(${index})"  style="color: red;"></i>
-                 
+                <div class="ui checkbox">
+                    <input class="ui checkbox" type="checkbox" id="check-${index}" onclick="checkCheckbox(${index})" />
+                    <label id="text-${index}">` + $('#to-do').val() + `</label>
+                </div>
+                <div class="right floated content">
+                    <i class="blue large edit icon" id="edit-button-${index}" onclick="editToDo(${index})" style="display: inline;"></i>
+                    <i class="red large trash icon" id="delete-button-${index}" onclick="deleteToDo(${index})" style="display: inline;"></i>
+                </div>
             </div>
-            <hr id="hr-${index}">
+            <div class="ui divider" id="hr-${index}"></div>
             `
         );
         // Clear Textfield for new ToDo
@@ -33,22 +36,28 @@ function deleteAllToDos() {
 
 function checkCheckbox(number) {
     if($(`input#check-${number}`).prop('checked') == true) {
-        $(`font#text-${number}`).css('text-decoration', 'line-through');
+        $(`label#text-${number}`).css('text-decoration', 'line-through');
     }
 
     else {
-        $(`font#text-${number}`).css('text-decoration', 'none');
+        $(`label#text-${number}`).css('text-decoration', 'none');
     }
 }
 
 function editToDo(number) {
     let word = $(`#text-${number}`).text();
-    $(`font#text-${number}`).css('text-decoration', 'none');
+    $(`label#text-${number}`).css('text-decoration', 'none');
     $(`#edit-button-${number}`).css('display', 'none');
+    $(`#delete-button-${number}`).css('display', 'none');
     $(`input#check-${number}`).prop('disabled', true);
     $(`#text-${number}`).html( 
-        `<input type="text" id="edit-${number}" value="${word}" />
-         <i class="fa fa-floppy-o" onclick="save(${number})" style="color: dark-blue;"></i>
+        `<div class="ui transparent input">
+            <input type="text" class="ui input" id="edit-${number}" value="${word}" />
+         </div>
+         <div class="right floated content">
+            <i class="green large check circle icon" onclick="save(${number})"></i>
+            <i class="red large remove circle icon" onclick='cancel(${number}, "${word}")'></i>
+         </div>
         `
     );
     $(`#edit-${number}`).keypress(function (e) {
@@ -62,12 +71,21 @@ function editToDo(number) {
 function save(number) {
     if($(`#edit-${number}`).val().trim() != (null || "")) {
         $(`#edit-button-${number}`).css('display', 'inline');
+        $(`#delete-button-${number}`).css('display', 'inline');
         $(`input#check-${number}`).prop('disabled', false);
-        $(`#text-${number}`).html(
+        $(`label#text-${number}`).html(
             $(`#edit-${number}`).val()
         );
-        $(`font#text-${number}`).css('text-decoration', (($(`input#check-${number}`).prop('checked') == true) ? 'line-through' : 'none'));
+        $(`label#text-${number}`).css('text-decoration', (($(`input#check-${number}`).prop('checked') == true) ? 'line-through' : 'none'));
     } else {
         alert('You can not save an empty ToDo');
     }
+}
+
+function cancel(number, word) {
+    $(`#edit-button-${number}`).css('display', 'inline');
+    $(`#delete-button-${number}`).css('display', 'inline');
+    $(`input#check-${number}`).prop('disabled', false);
+    $(`label#text-${number}`).html(word);
+    $(`label#text-${number}`).css('text-decoration', (($(`input#check-${number}`).prop('checked') == true) ? 'line-through' : 'none'));
 }

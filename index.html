@@ -4,18 +4,34 @@
         <title>ToDo App</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"> 
         <script src="javascript/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <form onsubmit="return showToDo()">
-            <input id="to-do" type="text" onsubmit="showToDo()" placeholder="ToDo" />
-            <i class="fa fa-plus-square fa-lg" onclick="return showToDo()" style="color: green;"></i>
-            <br><br>
-            <div id="text"></div>
-            <button type="button" onclick="deleteAllToDos()">Remove All ToDo's</button>
+        <form class="ui basic form segment" onsubmit="return showToDo()">
+            <div class="ui card">
+                <div class="content">
+                    <div class="ui center aligned header">My ToDo's</div>
+                </div>
+                <div class="content">
+                <div class="ui fluid action input">
+                    <input id="to-do" type="text" onsubmit="showToDo()" placeholder="ToDo" />
+                    <button class="ui icon button">
+                        <i class="plus icon" onclick="return showToDo()"></i>
+                    </button>
+                </div>
+                <br>
+                <div id="text"></div>
+                </div>
+                <button class="ui bottom button" type="button" onclick="deleteAllToDos()">
+                    <i class="trash icon"></i>
+                    Remove All ToDo's
+                </button>
+            </div>
         </form>
     </body>
 </html>
