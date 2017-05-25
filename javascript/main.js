@@ -8,7 +8,7 @@ function showToDo() {
                     <input class="ui checkbox" type="checkbox" id="check-${index}" onclick="checkCheckbox(${index})" />
                     <label id="text-${index}">` + $('#to-do').val() + `</label>
                 </div>
-                <div class="right floated content">
+                <div class="center aligned content top-space">
                     <i class="blue large edit icon" id="edit-button-${index}" onclick="editToDo(${index})" style="display: inline;"></i>
                     <i class="red large trash icon" id="delete-button-${index}" onclick="deleteToDo(${index})" style="display: inline;"></i>
                 </div>
@@ -50,11 +50,10 @@ function editToDo(number) {
     $(`#edit-button-${number}`).css('display', 'none');
     $(`#delete-button-${number}`).css('display', 'none');
     $(`input#check-${number}`).prop('disabled', true);
+    // FIND SOLUTIONN FOR INPUT FIELD REPLACE IN CHECKBOX LABEL
     $(`#text-${number}`).html( 
         `<div class="ui transparent input">
-            <input type="text" class="ui input" id="edit-${number}" value="${word}" />
-         </div>
-         <div class="right floated content">
+            <input type="text" class="ui input" id="edit-${number}" value="${word}" />      
             <i class="green large check circle icon" onclick="save(${number})"></i>
             <i class="red large remove circle icon" onclick='cancel(${number}, "${word}")'></i>
          </div>
