@@ -6,7 +6,7 @@ function showToDo() {
             <div id="div-${index}">
                 <div class="ui checkbox">
                     <input class="ui checkbox" type="checkbox" id="check-${index}" onclick="checkCheckbox(${index})" />
-                    <label id="text-${index}">` + $('#to-do').val() + `</label>
+                    <label id="text-${index}" class="word-wrap">` + $('#to-do').val() + `</label>
                 </div>
                 <div class="center aligned content top-space">
                     <i class="blue large edit icon" id="edit-button-${index}" onclick="editToDo(${index})" style="display: inline;"></i>
